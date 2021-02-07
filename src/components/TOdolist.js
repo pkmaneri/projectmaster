@@ -4,16 +4,16 @@ export default class TodoList extends Component {
 
     render() {
         return (
-            <div>
+            <ul>
                 {this.props.x.map((item,i)=>{
                     return(
-                        <div key={i}>{item}
-                        </div>
+                        <li key={i}>{item}
+                        </li>
                     )
                 })}
 
 
-            </div>
+            </ul>
         )
     }
 }
