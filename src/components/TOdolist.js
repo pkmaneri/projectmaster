@@ -4,10 +4,10 @@ export default class TodoList extends Component {
 
     render() {
         return (
-            <ul>
+            <ul className="list-group">
                 {this.props.x.map((item,i)=>{
                     return(
-                        <li key={i}>{item}
+                        <li className="list-group-item"key={i}>{item}
                         </li>
                     )
                 })}
