@@ -14,10 +14,7 @@ export default class Master extends Component {
             listItem: [...this.state.listItem, x]
         })
     }
-    handleClick1(data) {
-        console.log(data);
-
-    }
+   
     render() {
         return (
             <>
@@ -25,7 +22,7 @@ export default class Master extends Component {
                     <div className="row">
                         <div className="col">
                             <Todo callback={this.handleClick.bind(this)} />
-                            <Topic callback1={this.handleClick1.bind(this)} />
+                            <Topic x={this.state.listItem} />
                         </div>
                         <div className="col">
                             <TodoList x={this.state.listItem} />

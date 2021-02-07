@@ -11,8 +11,6 @@ export default class TodoList extends Component {
                         </li>
                     )
                 })}
-
-
             </ul>
         )
     }
