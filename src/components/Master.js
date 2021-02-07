@@ -21,7 +21,7 @@ export default class Master extends Component {
     handleClick(x) {
         console.log(x);
         this.setState({
-            listItem: [...this.state.listItem, x]
+            listItem: [...this.state.listItem, { subject: x, topics: []}]
         })
     }
    

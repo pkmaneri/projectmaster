@@ -4,7 +4,7 @@ export default class TodoList extends Component {
    
     render() {
         return (
-          
+         
             <ul className="list-group">
                 {this.props.x.map((item, i) => {
                     return (
@@ -22,7 +22,7 @@ export default class TodoList extends Component {
 
                             </ul>
                         </li>
-
+                        
                     )
                 })}
             </ul>
