@@ -16,8 +16,16 @@ export default class Master extends Component {
     render() {
         return (
             <>
-                <Todo callback={this.handleClick.bind(this)} />
-                <TodoList x={this.state.listItem} />
+                <div className="container">
+                    <div className="row">
+                        <div className="col">
+                            <Todo callback={this.handleClick.bind(this)} />
+                        </div>
+                        <div className="col">
+                            <TodoList x={this.state.listItem} />
+                        </div>
+                    </div>
+                </div>
             </>
         )
     }
