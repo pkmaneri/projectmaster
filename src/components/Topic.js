@@ -8,10 +8,12 @@ export default class Topic extends Component {
             <>
                 <div className="input-group">
                     <select name="cars" id="cars">
-                        <option value="html">html</option>
-                        <option value="css">css</option>
-                        <option value="js">Js</option>
-                        <option value="react">React</option>
+                        {this.props.x.map((item,i) => {
+                            return (
+                                <option key={i}>{item}</option>
+                            )
+                        })}
+                        
                     </select>
                     <div className="input-group mb-3">
                         <input type="text" className="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" />
