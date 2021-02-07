@@ -10,10 +10,10 @@ export default class Topic extends Component {
                     <select name="cars" id="cars">
                         {this.props.x.map((item,i) => {
                             return (
-                                <option key={i}>{item}</option>
+                                <option key={i}>{item.subject}</option>
                             )
                         })}
-                        
+
                     </select>
                     <div className="input-group mb-3">
                         <input type="text" className="form-control" aria-label="Recipient's username" aria-describedby="button-addon2" />

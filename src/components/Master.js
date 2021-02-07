@@ -5,7 +5,17 @@ import Topic from "./Topic";
 
 export default class Master extends Component {
     state = {
-        listItem: []
+        listItem: [
+            {
+                topics: ["hoc"],
+                subject: "react"
+            },
+            {
+                topics: ["flexbox"],
+                subject: "css"
+            }
+
+        ]
     }
 
     handleClick(x) {
