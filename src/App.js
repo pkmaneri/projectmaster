@@ -7,7 +7,7 @@ class App extends Component {
     inputText: ""
   }
   componentDidMount() {
-    let inputText = localStorage.getItem("inputText");
+    let inputText = sessionStorage.getItem("inputText");
     this.setState({
       inputText
     })
@@ -19,7 +19,7 @@ class App extends Component {
     })
   }
   onClickSave() {
-    localStorage.setItem("inputText", this.state.inputText)
+    sessionStorage.setItem("inputText", this.state.inputText)
 
   }
 
@@ -29,7 +29,7 @@ class App extends Component {
         <nav className="navbar navbar-dark bg-dark">
           <div className="container-fluid">
             <div className="col">
-              <a className="navbar-brand">{this.state.inputText}</a>
+              <a className="navbar-brand">Navbar</a>
             </div>
             <div className="col">
               <input className="form-control me-2" type="search"
@@ -38,6 +38,7 @@ class App extends Component {
               <button className="btn btn-outline-success" type="submit" onClick={this.onClickSave.bind(this)}>Save</button>
             </div>
           </div>
+          {this.state.inputText}
         </nav>
         <br></br>
         <Master />
