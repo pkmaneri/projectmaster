@@ -18,9 +18,9 @@ export default class Master extends Component {
         }
     }
 
-    handleClick(x) {
+    handleClick(data) {
         this.setState({
-            listItem: [...this.state.listItem, { subject: x, topics: [] }]
+            listItem: [...this.state.listItem, { subject: data, topics: [] }]
         }, () => {
             localStorage.setItem("listItem", JSON.stringify(this.state.listItem));
         })
@@ -85,10 +85,10 @@ export default class Master extends Component {
                     <div className="row">
                         <div className="col">
                             <Todo callback={this.handleClick.bind(this)} />
-                            <Topic x={this.state.listItem} callback={this.handleTopic.bind(this)} />
+                            <Topic data={this.state.listItem} callback={this.handleTopic.bind(this)} />
                         </div>
                         <div className="col">
-                            <TodoList x={this.state.listItem} callback={this.handleTopicSwitchValue.bind(this)} />
+                            <TodoList data={this.state.listItem} callback={this.handleTopicSwitchValue.bind(this)} />
                         </div>
 
                     </div>

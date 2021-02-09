@@ -7,10 +7,10 @@ export default class TodoList extends Component {
         return (
 
             <ul className="list-group">
-                {this.props.x.map((item, i) => {
+                {this.props.data.map((item, i) => {
                     return (
                         <li className="list-group-item list-group-item-primary" key={i}>
-                            <span style={{  "text-transform": "capitalize"}} >
+                            <span style={{  "texttransform": "capitalize"}} >
                             {item.subject}
                             </span>
                             <ul className="list-group">

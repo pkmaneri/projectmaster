@@ -28,17 +28,17 @@ export default class Topic extends Component {
         return (
             <>
                 <div className="input-group">
-                    <select   style={{  "text-transform": "capitalize"}}
+                    <select   style={{  "texttransform": "capitalize"}}
                         onChange={this.handleChange.bind(this)}
                         value={this.state.selectValue}>
-                        {this.props.x.map((item, i) => {
+                        {this.props.data.map((item, i) => {
                             return (
                                 <option key={i}>{item.subject}</option>
                             )
                         })}
 
                     </select>
-                    <input type="text" className="form-control" aria-label="Recipient's username"
+                    <input type="tedatt" className="form-control" aria-label="Recipient's username"
                         aria-describedby="button-addon2"
                         onChange={this.handleTopicInput.bind(this)}
                         value={this.state.topic} />
