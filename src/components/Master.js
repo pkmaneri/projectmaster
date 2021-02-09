@@ -2,12 +2,13 @@ import React, { Component } from "react"
 import Todo from "./Todo";
 import TodoList from "./TOdolist";
 import Topic from "./Topic";
+import Users from "./Users"
 
 export default class Master extends Component {
     state = {
         listItem: []
     }
-
+    // key  getItem .
     componentDidMount() {
         let listItem = localStorage.getItem("listItem");
         if (listItem) {
@@ -22,6 +23,7 @@ export default class Master extends Component {
         this.setState({
             listItem: [...this.state.listItem, { subject: data, topics: [] }]
         }, () => {
+            //key and value in setItem.
             localStorage.setItem("listItem", JSON.stringify(this.state.listItem));
         })
     }
@@ -32,11 +34,11 @@ export default class Master extends Component {
         listItem.map((subjectItem) => {
             if (subjectItem.subject == subject) {
                 subjectItem.topics.push({
-                    topicName : topicName,
+                    topicName: topicName,
                     switchValue: true
                 })
 
-                subjectItem.topics.sort((a,b) => b.switchValue - a.switchValue)
+                subjectItem.topics.sort((a, b) => b.switchValue - a.switchValue)
 
             }
             return subjectItem;
@@ -64,7 +66,7 @@ export default class Master extends Component {
                     return topic
                 })
 
-                subjectItem.topics.sort((a,b) => b.switchValue - a.switchValue)
+                subjectItem.topics.sort((a, b) => b.switchValue - a.switchValue)
 
             }
             return subjectItem;
@@ -84,6 +86,9 @@ export default class Master extends Component {
                 <div className="container">
                     <div className="row">
                         <div className="col">
+                            <Users/>
+                        </div>
+                        <div className="col">
                             <Todo callback={this.handleClick.bind(this)} />
                             <Topic data={this.state.listItem} callback={this.handleTopic.bind(this)} />
                         </div>
@@ -92,7 +97,6 @@ export default class Master extends Component {
                         </div>
 
                     </div>
-
                 </div>
             </>
         )
