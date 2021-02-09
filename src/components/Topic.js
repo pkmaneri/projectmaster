@@ -28,7 +28,7 @@ export default class Topic extends Component {
         return (
             <>
                 <div className="input-group">
-                    <select name="cars" id="cars"
+                    <select   style={{  "text-transform": "capitalize"}}
                         onChange={this.handleChange.bind(this)}
                         value={this.state.selectValue}>
                         {this.props.x.map((item, i) => {

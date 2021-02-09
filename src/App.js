@@ -3,7 +3,7 @@ import Master from './components/Master';
 
 function App() {
   return (
-    <div classNameName="App">
+    <div className="App">
       <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand">Navbar</a>

@@ -8,41 +8,75 @@ export default class Master extends Component {
         listItem: []
     }
 
-    componentDidMount(){
-       let listItem =  localStorage.getItem("listItem");
-       if (listItem){
-        listItem = JSON.parse(listItem)
-        this.setState({
-            listItem
-        })
-       }
+    componentDidMount() {
+        let listItem = localStorage.getItem("listItem");
+        if (listItem) {
+            listItem = JSON.parse(listItem)
+            this.setState({
+                listItem
+            })
+        }
     }
 
     handleClick(x) {
-        console.log(x);
         this.setState({
             listItem: [...this.state.listItem, { subject: x, topics: [] }]
-        }, ()=>{
-            localStorage.setItem("listItem",JSON.stringify( this.state.listItem));
+        }, () => {
+            localStorage.setItem("listItem", JSON.stringify(this.state.listItem));
         })
     }
 
-    handleTopic(topic, subject) {
+    handleTopic(topicName, subject) {
         let listItem = [...this.state.listItem];
 
         listItem.map((subjectItem) => {
             if (subjectItem.subject == subject) {
-                subjectItem.topics.push(topic)
+                subjectItem.topics.push({
+                    topicName : topicName,
+                    switchValue: true
+                })
+
+                subjectItem.topics.sort((a,b) => b.switchValue - a.switchValue)
+
             }
             return subjectItem;
         });
 
         this.setState({
             listItem
-        }, ()=>{
-            localStorage.setItem("listItem",JSON.stringify( this.state.listItem));
+        }, () => {
+            localStorage.setItem("listItem", JSON.stringify(this.state.listItem));
         })
     }
+    handleTopicSwitchValue(subject, inputTopic) {
+
+        // console.log(subject, inputTopic)
+        let listItem = [...this.state.listItem];
+
+        listItem.map((subjectItem) => {
+            if (subjectItem.subject == subject) {
+
+                subjectItem.topics.map((topic) => {
+
+                    if (inputTopic == topic.topicName) {
+                        topic.switchValue = !topic.switchValue
+                    }
+                    return topic
+                })
+
+                subjectItem.topics.sort((a,b) => b.switchValue - a.switchValue)
+
+            }
+            return subjectItem;
+        });
+
+        this.setState({
+            listItem
+        }, () => {
+            localStorage.setItem("listItem", JSON.stringify(this.state.listItem));
+        })
+    }
+
 
     render() {
         return (
@@ -54,7 +88,7 @@ export default class Master extends Component {
                             <Topic x={this.state.listItem} callback={this.handleTopic.bind(this)} />
                         </div>
                         <div className="col">
-                            <TodoList x={this.state.listItem} />
+                            <TodoList x={this.state.listItem} callback={this.handleTopicSwitchValue.bind(this)} />
                         </div>
 
                     </div>
@@ -64,3 +98,4 @@ export default class Master extends Component {
         )
     }
 }
+

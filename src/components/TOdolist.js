@@ -1,20 +1,30 @@
 import React, { Component } from "react"
+import "./TodoList.css"
 
 export default class TodoList extends Component {
-   
+
     render() {
         return (
-         
+
             <ul className="list-group">
                 {this.props.x.map((item, i) => {
                     return (
                         <li className="list-group-item list-group-item-primary" key={i}>
+                            <span style={{  "text-transform": "capitalize"}} >
                             {item.subject}
+                            </span>
                             <ul className="list-group">
-                                {item.topics.map((topic) => {
+                                {item.topics.map((topic, j) => {
+                                    // console.log(topic)
                                     return (
-                                        <li className="list-group-item">
-                                            {topic}
+                                        <li key={j} className="list-group-item">
+                                            <div className="form-check form-switch"  style={{float:"right"}} >
+                                                <input className="form-check-input"  
+                                                type="checkbox" 
+                                                onChange={this.props.callback.bind(this, item.subject, topic.topicName)}
+                                                checked={topic.switchValue}/>
+                                            </div>
+                                            {topic.topicName}
                                         </li>
 
                                     )
@@ -22,7 +32,7 @@ export default class TodoList extends Component {
 
                             </ul>
                         </li>
-                        
+
                     )
                 })}
             </ul>
